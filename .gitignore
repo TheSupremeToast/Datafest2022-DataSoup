@@ -1,0 +1,6 @@
+# files to ignore
+baseline.pdf
+
+# directories to ignore
+*pycache*
+
