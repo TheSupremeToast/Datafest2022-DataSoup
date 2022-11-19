@@ -1,5 +1,8 @@
 # files to ignore
 baseline.pdf
+Gramacy Solar Energy Project.pdf
+.RData
+.Rhistory
 
 # directories to ignore
 *pycache*
