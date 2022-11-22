@@ -3,6 +3,7 @@ baseline.pdf
 Gramacy Solar Energy Project.pdf
 .RData
 .Rhistory
+.Rproj
 
 # directories to ignore
 *pycache*
