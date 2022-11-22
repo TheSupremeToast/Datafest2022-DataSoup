@@ -12,9 +12,9 @@ mt_new <- mt %>% filter(row_number() <= 80)
 # checks if entry is in a production or usage row
 mt_sort <- function (x) {
     if (x %% 2 == 0) {
-        return('prod')
-    } else {
         return('cons')
+    } else {
+        return('prod')
     }
 }
 
@@ -26,9 +26,23 @@ mt_new <- mt_new %>% pivot_wider(names_from=entry_type,
 
 # graph production versus consumption
 ggplot(mt_new) +
-    geom_line(aes(y=prod_curr_read, x=date, color='red')) +
-    geom_line(aes(y=cons_curr_read, x=date, color='blue')) +
-    ggtitle('Gramacy: Production vs Consumption') # +
-# TODO: fix legend to show respective column names
-    # theme(legend.txt = )
+    geom_line(aes(y=prod_curr_read, x=date), color='green') +
+    geom_line(aes(y=cons_curr_read, x=date), color='red') +
+    ggtitle('Gramacy: Production vs Consumption')
+
+# plot of difference of production - consumption
+mt_new$diff_read <- mt_new$prod_curr_read - mt_new$cons_curr_read
+ggplot(mt_new) +
+    geom_line(aes(y=diff_read, x=date), color='blue') +
+    geom_line(aes(y=0, x=date))
+    ggtitle('Gramacy: Difference in Production vs Consumption')
+
+# monthly difference in billed usage
+mt_new$diff_usage <- mt_new$prod_billed_usage + mt_new$cons_billed_usage
+ggplot(mt_new) +
+    geom_line(aes(y=diff_usage, x=date), color='orange') +
+    geom_line(aes(y=0, x=date), color='black') +
+    ggtitle('Gramacy: Billed Usage Difference vs Time')
+
+
 
