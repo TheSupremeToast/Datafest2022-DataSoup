@@ -7,3 +7,4 @@ Gramacy Solar Energy Project.pdf
 # directories to ignore
 *pycache*
 
+.Rproj.user
